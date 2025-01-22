@@ -19,3 +19,12 @@ class Crawler:
         self.spider.set_source(source)
 
         return self.spider.run()
+
+if __name__ == "__main__":
+
+    crawler = Crawler(name='SimpleSpider')
+
+    parsed_data = crawler.crawl(is_local=True, source='D:/research/research5/data/WebKB/webkb-data.gtar/webkb/course/cornell/http_^^cs.cornell.edu^Info^Courses^Current^CS415^CS414.html')
+ 
+    print(parsed_data)
+
