@@ -18,3 +18,4 @@ class Crawler:
         self.spider.set_is_local(is_local)
         self.spider.set_source(source)
 
+        return self.spider.run()
