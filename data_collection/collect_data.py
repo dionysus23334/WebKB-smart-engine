@@ -7,34 +7,31 @@ import csv
 
 def clean_content_thoroughly(text):
     """
-    更严格地清理内容，移除所有换行符和分隔符。
+    clean original text
     """
-    if not isinstance(text, str):  # 确保输入是字符串
+    if not isinstance(text, str): 
         return ""
-
-    # 使用 BeautifulSoup 去除 HTML 标签
     soup = BeautifulSoup(text, "html.parser")
-    text = soup.get_text()  # 提取纯文本
+    text = soup.get_text() 
 
-    # 替换 HTML 特殊字符
     text = re.sub(r"&nbsp;|&lt;|&gt;|&amp;|&quot;|&#39;", " ", text)
-    # 替换换行符和制表符为空格
+
     text = re.sub(r"[\t\n\r]", " ", text)
-    # 合并多余空格
+
     text = re.sub(r"\s+", " ", text)
-    # 移除潜在的 CSV 分隔符（如逗号和双引号）
-    text = re.sub(r"[\"',]", " ", text)  # 将逗号和引号替换为空格
-    # 去除首尾多余空格
+
+    text = re.sub(r"[\"',]", " ", text)  
+
     return text.strip()
 
 
-def load_and_clean_webkb_data(dataset_path, output_file):
+def load_clean_filter_webkb_data(dataset_path, output_file):
     """
-    Read webKB and save as CSV, whose structure is University -- class -- content -- link
-    :param dataset_path: WebKB path
+    Read and drop_Nan webKB, write into CSV, with the structure of: University, Class, Content, Link
+    :param dataset_path: path to Web->KB
     :param output_file: output path
     """
-    data = []  # 用于保存每条记录
+    data = []  
 
     # 遍历数据集的目录结构
     for class_name in os.listdir(dataset_path):
@@ -61,16 +58,15 @@ def load_and_clean_webkb_data(dataset_path, output_file):
                             "Filename": file_name
                         })
 
-    # 将数据保存到 CSV 文件
+    # 将数据保存到原始 CSV 文件
     df = pd.DataFrame(data)
-    df.dropna()
     df.to_csv(output_file, index=False, encoding="utf-8", quoting=csv.QUOTE_ALL)
-    print(f"数据已保存到 {output_file}")
+    print('Done')
 
 
-# 示例：WebKB 数据集路径和输出文件路径
 dataset_path = "webkb"
-output_file = "Collected_data.csv"
+output_file = "collected_content.csv"
+allowed_universities = ['cornell','misc','texas','washington','wisconsin']
 
 # 运行函数
-load_and_clean_webkb_data(dataset_path, output_file)
+load_clean_filter_webkb_data(dataset_path, output_file)
