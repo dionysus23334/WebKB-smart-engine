@@ -63,10 +63,11 @@ def load_clean_filter_webkb_data(dataset_path, output_file):
     df.to_csv(output_file, index=False, encoding="utf-8", quoting=csv.QUOTE_ALL)
     print('Done')
 
+if __name__ == "__main__":
 
-dataset_path = "webkb"
-output_file = "collected_content.csv"
-allowed_universities = ['cornell','misc','texas','washington','wisconsin']
+    dataset_path = "webkb"
+    output_file = "collected_content.csv"
+    allowed_universities = ['cornell','misc','texas','washington','wisconsin']
 
-# 运行函数
-load_clean_filter_webkb_data(dataset_path, output_file)
+    # 运行函数
+    load_clean_filter_webkb_data(dataset_path, output_file)
