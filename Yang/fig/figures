@@ -1,1 +1,5 @@
-
+Figures summary:
+1. Dataset count
+2. 2D features for each category
+3. Confusion matrix for SVM
+4. Confusion matrix for GaussNaiveBayes
