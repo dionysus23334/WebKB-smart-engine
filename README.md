@@ -35,9 +35,7 @@ SVM is effective for this dataset due to its ability to handle high-dimensional 
 1. **One-vs-Rest (OvR):**  
    In the One-vs-Rest method, each class is treated as a binary classification problem. The class with the highest score is selected as the final prediction:
    
-   $
-   f(x) = \text{argmax}_{i} \ (w_i \cdot x + b_i)
-   $
+   $f(x) = \text{argmax}_{i} \ (w_i \cdot x + b_i)$
    
    Where:
    - $\( w_i \)$: The weight vector for class $\( i \)$.
@@ -46,17 +44,17 @@ SVM is effective for this dataset due to its ability to handle high-dimensional 
 
 3. **One-vs-One (OvO):**  
    In the One-vs-One approach, a binary classifier is trained for each pair of classes. The final prediction is determined by majority voting:  
-   \\[
-   C(x) = \text{argmax}_{i} \ \sum_{j \neq i} h_{ij}(x)
-   \\]
+   
+   $C(x) = \text{argmax}_{i} \ \sum_{j \neq i} h_{ij}(x)$
+   
    Where:
    - $\( h_{ij}(x) \)$: The decision function for the classifier between classes $\( i \)$ and $\( j \)$.
 
 5. **Crammer and Singer's Method:**  
    This method directly optimizes a multi-class objective by maximizing the margin between all classes:  
-   \\[
-   \text{minimize} \ \frac{1}{2} \sum_{i=1}^{k} \|w_i\|^2 + C \sum_{i=1}^{n} \sum_{j \neq y_i} \text{max}(0, 1 - (w_{y_i} \cdot x_i - w_j \cdot x_i))
-   \\]  
+   
+   $\text{minimize} \ \frac{1}{2} \sum_{i=1}^{k} \|w_i\|^2 + C \sum_{i=1}^{n} \sum_{j \neq y_i} \text{max}(0, 1 - (w_{y_i} \cdot x_i - w_j \cdot x_i))$
+   
    Where:
    - $\( y_i \)$: The true class label of sample $\( x_i \)$.
    - $\( k \)$: The number of classes.
@@ -64,8 +62,10 @@ SVM is effective for this dataset due to its ability to handle high-dimensional 
    - $\( C \)$: Regularization parameter to balance margin maximization and error minimization.
 
 7. **Hinge Loss for Multi-Class SVM:**  
-   The hinge loss for a multi-class SVM can be expressed as:  
-   $L = \sum_{i=1}^{n} \sum_{j \neq y_i} \text{max}(0, 1 - (w_{y_i} \cdot x_i - w_j \cdot x_i))$  
+   The hinge loss for a multi-class SVM can be expressed as:
+   
+   $L = \sum_{i=1}^{n} \sum_{j \neq y_i} \text{max}(0, 1 - (w_{y_i} \cdot x_i - w_j \cdot x_i))$
+   
    This loss function penalizes the model when the margin between the correct class and other classes is less than 1.
 
 ---
