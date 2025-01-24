@@ -9,4 +9,4 @@ Virtual Env: anaconda python3.10.9
 
 ## An example for Entity Recognition:
 
-![Alt Text](img/entity_recognition.png)
+![Alt Text](img/entity_recognition_example.png)
