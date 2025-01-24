@@ -38,9 +38,9 @@ SVM is effective for this dataset due to its ability to handle high-dimensional 
    f(x) = \text{argmax}_{i} \ (w_i \cdot x + b_i)
    $$  
    Where:
-   - \( w_i \): The weight vector for class \( i \).
-   - \( b_i \): The bias term for class \( i \).
-   - \( x \): The input sample.
+   - $\( w_i \)$: The weight vector for class $\( i \)$.
+   - $\( b_i \)$: The bias term for class $\( i \)$.
+   - $\( x \)$: The input sample.
 
 2. **One-vs-One (OvO):**  
    In the One-vs-One approach, a binary classifier is trained for each pair of classes. The final prediction is determined by majority voting:  
