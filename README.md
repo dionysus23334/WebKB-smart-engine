@@ -14,3 +14,22 @@ Virtual Env: anaconda python3.10.9
 
 ![Alt Text](img/word_cloud_example.png)
 
+## Local Dataset Overview 
+
+![Alt Text](img/data_statis.jpg)
+
+## 2 dimensional features
+
+![Alt Text](img/word_cloud_example.png)
+
+## Traditional Method
+
+### SVM
+
+![Alt Text](img/SVM_confusion_matrix.png)
+
+### Gaussian Naive Bayes
+
+![Alt Text](img/NB_confusion_matrix.png)
+
+
