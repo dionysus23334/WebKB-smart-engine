@@ -26,10 +26,10 @@ Virtual Env: anaconda python3.10.9
 
 ### SVM
 
-![Alt Text](img/SVM_confusion_matrix.png)
+![Alt Text](img/SVM_confusion_matrix.jpg)
 
 ### Gaussian Naive Bayes
 
-![Alt Text](img/NB_confusion_matrix.png)
+![Alt Text](img/NB_confusion_matrix.jpg)
 
 
