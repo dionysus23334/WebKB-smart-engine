@@ -1,4 +1,4 @@
-# Smart Knowledge Engine based on WebKb
+# Smart Knowledge Engine based on WebKB
 
 Virtual Env: anaconda python3.10.9
 
