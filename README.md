@@ -36,9 +36,7 @@ SVM is effective for this dataset due to its ability to handle high-dimensional 
    In the One-vs-Rest method, each class is treated as a binary classification problem. The class with the highest score is selected as the final prediction:
    
    $
-   
    f(x) = \text{argmax}_{i} \ (w_i \cdot x + b_i)
-
    $
    
    Where:
