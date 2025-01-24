@@ -45,7 +45,7 @@ SVM is effective for this dataset due to its ability to handle high-dimensional 
 2. **One-vs-One (OvO):**  
    In the One-vs-One approach, a binary classifier is trained for each pair of classes. The final prediction is determined by majority voting:  
    
-   $C(x) = \text{argmax}_{i}\ \sum_{j \neq i}h_{ij}(x)$
+   $C(x) = \text{argmax}\_{i}\ \sum_{j \neq i}h_{ij}(x)$
 
    Where:
    - $\( h_{ij}(x) \)$: The decision function for the classifier between classes $\( i \)$ and $\( j \)$.
