@@ -3,3 +3,4 @@ Figures summary:
 2. 2D features for each category
 3. Confusion matrix for SVM
 4. Confusion matrix for GaussNaiveBayes
+5. Basic NN confusion matrix
