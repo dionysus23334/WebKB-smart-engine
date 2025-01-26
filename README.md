@@ -101,3 +101,6 @@ Gaussian Naive Bayes is a fast and interpretable method that works well for data
 | student    | 0.843666  | 0.984277 | 0.908563 |
 
 ![BERT](img/bert_results.png)
+
+![BERTHEADS](img/bert_modelview.png)
+
