@@ -144,5 +144,21 @@ def load_svm_dataset_model():
     hidden_cache_path = "optimized_class_hidden_cache.pt"
     torch.save(all_cls_embeddings, hidden_cache_path)
     print(f"CLS embeddings saved to {hidden_cache_path}")
+
+
+    csv_file = "collected_content.csv"
+    df = pd.read_csv(csv_file)
     
+    y = df.iloc[:,1]
+    cls_embeddings = torch.load("optimized_class_hidden_cache.pt",weights_only=True)
+    
+    X = cls_embeddings.numpy()
+    
+    X_train, X_test, y_train, y_test = train_test_split(X,y,stratify=y,random_state=0)
+    Scaler = MinMaxScaler().fit(X_train)
+    X_train_scaled = Scaler.transform(X_train)
+    X_test_scaled = Scaler.transform(X_test)
+
+    return X_train_scaled, X_test_scaled
+
 
