@@ -1,4 +1,4 @@
-
+# 作者 Author：Guo Yuxi
 from spiders.simple_spider import SimpleSpider
 from spiders.agent_spider import AgentSpider
 
