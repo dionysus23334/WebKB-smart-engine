@@ -1,4 +1,4 @@
-
+# 作者 Author：Guo Yuxi
 import spacy
 
 def entity_recognition(text):
