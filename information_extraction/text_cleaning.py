@@ -1,5 +1,7 @@
 import re
 import html
+import torch
+from bs4 import BeautifulSoup
 
 def clean_text(text):
     """
@@ -61,6 +63,22 @@ def get_cleaned_data(data):
 
     # 打印结果
     return cleaned_data
+
+
+def clean_text(text):
+    text = re.sub(r'\s+', ' ', text)  # 移除多余空格
+    text = re.sub(r'[^a-zA-Z0-9\u4e00-\u9fa5 ]', '', text)  # 保留中英文和数字
+    return text
+
+
+def clean_html(content):
+    soup = BeautifulSoup(content, "html.parser")
+    return soup.get_text()
+
+# 分词和编码文本
+def tokenize_data(texts, labels, tokenizer, max_length=512):
+    inputs = tokenizer(texts.tolist(), max_length=max_length, padding=True, truncation=True, return_tensors="pt")
+    return inputs, torch.tensor(labels, dtype=torch.long)
 
 
 if __name__ == "__main__":
