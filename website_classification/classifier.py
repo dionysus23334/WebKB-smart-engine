@@ -7,6 +7,10 @@ from sklearn.preprocessing import LabelEncoder
 from torch.utils.data import DataLoader, TensorDataset
 from bs4 import BeautifulSoup
 from sklearn.model_selection import train_test_split
+import pandas as pd
+import torch
+from transformers import AutoTokenizer, AutoModel
+from torch.utils.data import Dataset, DataLoader
 
 
 # 导入自定义包
@@ -80,4 +84,65 @@ def load_bert_dataset_model_optimizer():
         optimizer = torch.optim.AdamW(model.parameters(), lr=2e-5)
 
     return train_dataloader, test_dataloader, model, optimizer
+
+def load_svm_dataset_model():
+
+    csv_file = "collected_content.csv"
+    df = pd.read_csv(csv_file)
+    
+    schools = df.iloc[:,0].tolist()
+    y = df.iloc[:,1].tolist()
+    X1,X2 = df.iloc[:,2].tolist(),df.iloc[:,-1].tolist()
+    
+    model_ckpt = 'distilbert-base-uncased'
+    tokenizer = AutoTokenizer.from_pretrained(model_ckpt)
+    
+    def tokenize(batch):
+        return tokenizer(batch,padding=True, truncation=True)
+    
+    
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print(f"Using device: {device}")
+    
+    model = AutoModel.from_pretrained(model_ckpt).to(device)
+    
+    
+    # Define dataset
+    class TextDataset(Dataset):
+        def __init__(self, texts):
+            self.texts = texts
+    
+        def __len__(self):
+            return len(self.texts)
+    
+        def __getitem__(self, idx):
+            return self.texts[idx]
+    
+    
+    batch_size = 32
+    dataset = TextDataset(X1)
+    dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=False)
+    
+    # fetch [CLS] embeddings
+    all_cls_embeddings = []
+    with torch.no_grad():
+        for batch in dataloader:
+    
+            inputs = tokenizer(batch, padding=True, truncation=True, return_tensors='pt').to(device)
+    
+    
+            outputs = model(**inputs)
+            cls_embeddings = outputs.last_hidden_state[:, 0, :]  # 提取 [CLS] 嵌入
+    
+            all_cls_embeddings.append(cls_embeddings.cpu())
+    
+    # gather all [CLS] embeddings
+    all_cls_embeddings = torch.cat(all_cls_embeddings, dim=0)
+    print("All CLS Embeddings shape:", all_cls_embeddings.shape)
+    
+    # store embeddings
+    hidden_cache_path = "optimized_class_hidden_cache.pt"
+    torch.save(all_cls_embeddings, hidden_cache_path)
+    print(f"CLS embeddings saved to {hidden_cache_path}")
+    
 
