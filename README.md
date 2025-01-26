@@ -88,4 +88,15 @@ These mathematical formulations explain the core principles behind multi-class S
 Gaussian Naive Bayes is a fast and interpretable method that works well for datasets with normally distributed features. Despite being slightly less accurate than SVM, it provides valuable probabilistic insights.
 ![Alt Text](img/NB_confusion_matrix.jpg)
 
+## BERT
+
+| Class      | Precision | Recall   | F1-Score |
+|------------|-----------|----------|----------|
+| course     | 0.970238  | 0.857895 | 0.910615 |
+| department | 0.862069  | 1.000000 | 0.925926 |
+| faculty    | 0.947115  | 0.841880 | 0.891403 |
+| other      | 0.930468  | 0.972259 | 0.950904 |
+| project    | 0.911111  | 0.836735 | 0.872340 |
+| staff      | 0.000000  | 0.000000 | 0.000000 |
+| student    | 0.843666  | 0.984277 | 0.908563 |
 
