@@ -16,7 +16,7 @@ from torch.utils.data import Dataset, DataLoader
 # 导入自定义包
 from information_extraction.text_cleaning import clean_text, clean_html, tokenize_data
 
-# 作者：Guo Yuxi
+# 作者 Author：Guo Yuxi
 def load_bert_dataset_model_optimizer():
 
     csv_file = "./data/collected_content.csv"
@@ -85,7 +85,7 @@ def load_bert_dataset_model_optimizer():
 
     return train_dataloader, test_dataloader, model, optimizer
 
-# 作者：Yang Fenglin
+# 作者 Author：Yang Fenglin
 # Guo Yuxi进行整理
 def load_svm_dataset_model():
 
