@@ -47,4 +47,10 @@ def train_svm():
     labels = np.unique(y_test)
     print(f'scores for SVM:{svm.score(X_test_scaled,y_test)}')
     plot_confusion_matrix(y_preds,y_test, labels, svm)
-
+def train_NB():
+    X_train_scaled, X_test_scaled, y_train, y_test, svm = load_svm_dataset_model()
+    NB = GaussianNB().fit(X_train_scaled,y_train)
+    y_pred_NB = NB.predict(X_test_scaled)
+    labels = np.unique(y_test)
+    plot_confusion_matrix(y_pred_NB,y_test,labels, NB)
+    print(f'accuracy for naive bayes:{NB.score(X_test_scaled,y_test)}')
