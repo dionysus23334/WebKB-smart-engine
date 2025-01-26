@@ -4,7 +4,7 @@ from sklearn.metrics import accuracy_score, classification_report
 import torch
 from tqdm import tqdm
 
-
+# 作者 Author：Guo Yuxi
 def train_bert(epoch):
 
     train_dataloader, test_dataloader, model, optimizer = load_bert_dataset_model_optimizer()
