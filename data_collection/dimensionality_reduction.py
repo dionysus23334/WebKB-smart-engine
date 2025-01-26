@@ -8,7 +8,7 @@ import warnings
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 
-csv_file = "collected_content.csv"
+csv_file = "./local_data/collected_content.csv"
 df = pd.read_csv(csv_file)
 
 df.iloc[:,1].value_counts(ascending=True).plot(kind='barh',color='#3498db')
