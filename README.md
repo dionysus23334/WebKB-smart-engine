@@ -1,5 +1,9 @@
 # Smart Knowledge Engine based on WebKB
 
+![Poster 1](img/poster1.drawio.png)
+
+![Poster 2](img/poster2.drawio.png)
+
 Virtual Env: anaconda python3.10.9
 
 The Smart Knowledge Engine leverages the WebKB dataset to enable advanced text mining, entity recognition, and visualization. This system is designed to integrate traditional machine learning methods and modern natural language processing techniques to provide actionable insights. The following sections outline its conceptual framework, example applications, feature visualization, and evaluation results.
